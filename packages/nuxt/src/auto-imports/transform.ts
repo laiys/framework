@@ -44,7 +44,7 @@ export const TransformPlugin = createUnplugin(({ ctx, options, sourcemap }: {ctx
         return
       }
 
-      const { s } = await ctx.injectImports(code, id, { autoImport: !isNodeModule })
+      const { s } = await ctx.injectImports(code, id, { autoImport: options.enabled && !isNodeModule })
       if (s.hasChanged()) {
         return {
           code: s.toString(),
